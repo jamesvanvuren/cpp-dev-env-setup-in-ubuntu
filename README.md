@@ -1,5 +1,9 @@
+# Summary
+
 A project with steps to set up a C++ development environment with Boost using Clang, Conan, CMake, and Ninja.
 
+
+# Versions
 
 This uses:
 
@@ -19,7 +23,7 @@ Ninja version 1.10.1
 The process is:
 
 
-Fully update Ubuntu
+# Fully update Ubuntu
 
 Update Ubuntu
 
@@ -42,7 +46,7 @@ sudo reboot now
 
 
 
-Set the machine's hostname.
+# Set the machine's hostname.
 
 Rename an Ubuntu machine
 
@@ -56,7 +60,7 @@ sudo reboot now
 
 
 
-Install mDNS so that can refer to the machine by its hostname (with ".local" appended) over the network.
+# Install mDNS so that can refer to the machine by its hostname (with ".local" appended) over the network.
 
 Install mDNS on Ubuntu 20.04 so that can access the Ubuntu server on local area network with "hostname.local" instead of IP address
 
@@ -102,7 +106,7 @@ sudo apt install avahi-utils
 
 
 
-Set up "ll" alias to list hidden files and folders, list folders first.
+# Set up "ll" alias to list hidden files and folders, list folders first.
 
 vim ~/.bashrc
 
@@ -117,7 +121,7 @@ alias ll='ls --color=auto -alh --group-directories-first'
 
 
 
-Install Clang
+# Install Clang
 
 
 
@@ -171,7 +175,8 @@ sudo apt-get install -y software-properties-common
 
 sudo apt-get install -y gnupg
 
-# Needed for repo access
+Needed for repo access
+
 sudo apt-get install -y apt-transport-https
 
 sudo apt-get install -y ca-certificates 
@@ -183,7 +188,7 @@ sudo apt-get install -y ca-certificates
 
 sudo apt-get install -y build-essential
 
-# Install Tool
+Install Tool
 
 sudo apt-get install -y clang-16
 sudo apt-get install -y clang-tools-16
@@ -211,7 +216,7 @@ sudo apt-get install -y libclang-rt-16-dev-wasm32
 sudo apt-get install -y libclang-rt-16-dev-wasm64
 
 
- # Make an alias for the versioned executable
+ Make an alias for the versioned executable
 
 sudo ln -s /usr/bin/clang-16 /usr/bin/clang
 sudo ln -s /usr/bin/clang++-16 /usr/bin/clang++
@@ -225,6 +230,12 @@ sudo reboot now
 
 
 
+
+
+
+
+
+# Install the latest stable CMake
 
 
 
@@ -258,7 +269,6 @@ cmake version 3.22.1
 
 
 
-Install the latest stable CMake
 
 https://cmake.org/download/
 
@@ -295,27 +305,6 @@ cmake --version
 
 
 
-Key point - each version of CMake "knows about" (was written to handle producing build files for) the version of Boost that was current at the time the verion of CMake was created. Therefore you should use a version of Boost created no later then when the version of CMake was created.
-
-
-
-See when latest stable CMake was released
-
-https://github.com/Kitware/CMake/releases
-
-v3.26.4
-
-May 18, 2023
-
-
-
-
-What was the version of Boost at that time?
-
-https://www.boost.org/users/history
-
-Version 1.82.0
-April 14th, 2023 03:08 GMT
 
 
 
@@ -326,13 +315,7 @@ April 14th, 2023 03:08 GMT
 
 
 
-
-
-
-
-
-
-Install Ninja
+# Install Ninja
 
 sudo apt install ninja-build
 
@@ -366,7 +349,7 @@ It's only small flaw is that it uses ZLib, not Boost.
 
 
 
-Install conan
+# Install Conan
 
 cd ~
 sudo pip install conan
@@ -381,7 +364,7 @@ rm -rf /home/james/.conan2
 
 
 
-START EACH BUILD HERE
+# START EACH BUILD HERE
 
 Need to set CC and CXX before running "conan profile detect --force", so that it detects clang instead of gcc.
 
@@ -439,6 +422,38 @@ One of the things Conan can do is generate a toolchain file that you pass in a "
 
 
 
+# Install Boost using Conan
+
+
+Key point - each version of CMake "knows about" (was written to handle producing build files for) the version of Boost that was current at the time the verion of CMake was created. Therefore you should use a version of Boost created no later then when the version of CMake was created.
+
+
+
+See when latest stable CMake was released
+
+https://github.com/Kitware/CMake/releases
+
+v3.26.4
+
+May 18, 2023
+
+
+
+
+What was the version of Boost at that time?
+
+https://www.boost.org/users/history
+
+Version 1.82.0
+April 14th, 2023 03:08 GMT
+
+
+
+
+
+
+
+
 https://conan.io/center/boost
 
 Latest version of boost is 1.82.
@@ -459,7 +474,7 @@ CMakeToolchain
 
 
 
-
+# Create CMakeLists.txt
 
 vim CMakeLists.txt
 
@@ -514,7 +529,7 @@ This is also pretty well documented at https://cmake.org/cmake/help/latest/modul
 
 
 
-
+# Create the source code
 
 vim starting-conan-cmake-boost-project.cpp
 
@@ -544,7 +559,7 @@ int main()
 
 
 
-# https://stackoverflow.com/questions/59509768/is-there-a-way-to-tell-conan-to-use-different-cmake-executable-durning-conan-ins
+https://stackoverflow.com/questions/59509768/is-there-a-way-to-tell-conan-to-use-different-cmake-executable-durning-conan-ins
 
 
 
@@ -771,7 +786,7 @@ find /home/james/.conan2 -iname 'filesystem.hpp'
 
 
 
-
+# Run CMake to create the Makefile
 
 
 These next commands create the following files and folders in the "build" folder:
@@ -844,7 +859,7 @@ To see the different compiler and linker options for debug and release, after ge
 
 
 
-Build
+# Build
 
 
 These next commands create the following files:
@@ -889,7 +904,7 @@ https://docs.conan.io/2/tutorial/consuming_packages/build_simple_cmake_project.h
 
 
 
-Run
+# Run
 
 ./starting-conan-cmake-boost-project
 
@@ -912,12 +927,12 @@ export LD_LIBRARY_PATH=/home/james/Interviews/starting-projects/starting-cmake-b
 
 
 
-To uninstall boost
+# To uninstall boost
 
-# to uninstall debian version
+To uninstall debian version
 sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev
 
-# to uninstall the version which we installed from source
+To uninstall the version which we installed from source
 sudo rm -rf /usr/local/include/boost
 sudo rm -f /usr/local/lib/libboost_*
 
@@ -932,7 +947,7 @@ To uninstall the one we had Conan install
 
 
 
-To install LLDB
+# To install LLDB
 
 lldb
 Command 'lldb' not found, but can be installed with:
@@ -949,13 +964,13 @@ sudo apt install lldb
 
 
 
-Next steps.
+
+
+
+
+# Configure Visual Studio Code to find the Boost header files.
 
 Get Visual Studio Code intellisense working.
-
-
-
-Configure Visual Studio Code to find the Boost header files.
 
 In Visual Studio Code, hit Shift-Cmd-P.
 
@@ -1027,18 +1042,13 @@ Very slick.
 
 
 
-Move source into a src folder.
 
 
 
 
 
 
-
-
-
-
-DEBUG USING LLDB AND VISUAL STUDIO CODE
+# DEBUG USING LLDB AND VISUAL STUDIO CODE
 
 
 
