@@ -29,19 +29,19 @@ Update Ubuntu
 
 Fetch update software list
 
-sudo apt-get update
+    sudo apt-get update
 
-sudo reboot now
+    sudo reboot now
 
 
 Update Ubuntu software
 
-sudo apt-get upgrade
+    sudo apt-get upgrade
 
 
 Finally, reboot the Ubuntu box
 
-sudo reboot now
+    sudo reboot now
 
 
 
@@ -50,11 +50,11 @@ sudo reboot now
 
 Rename an Ubuntu machine
 
-sudo vim /etc/hostname
+    sudo vim /etc/hostname
 
-sudo vim /etc/hosts
+    sudo vim /etc/hosts
 
-sudo reboot now
+    sudo reboot now
 
 
 
@@ -83,40 +83,40 @@ Yes, that would prove it’s working. If you have an apple device you don’t ha
 PonJar
  May 4, 2021 at 8:51
 
-sudo apt update
+    sudo apt update
 
-sudo apt install avahi-daemon
+    sudo apt install avahi-daemon
 
-systemctl status avahi-daemon
+    systemctl status avahi-daemon
 
-If you have a firewall UDP port 5353 needs to be open.
+    If you have a firewall UDP port 5353 needs to be open.
 
-hostname
+    hostname
 
-From another machine:
+    From another machine:
 
-ping <hostname>.local
-
-
-sudo apt install avahi-utils
+    ping <hostname>.local
 
 
+    sudo apt install avahi-utils
 
 
 
 
 
-# Set up "ll" alias to list hidden files and folders, list folders first.
 
-vim ~/.bashrc
+
+# Set up "ll" alias to use color, list hidden files and folders, list folders first.
+
+    vim ~/.bashrc
 
 Change
 
-alias ll='ls -alF'
+    alias ll='ls -alF'
 
 to
 
-alias ll='ls --color=auto -alh --group-directories-first'
+    alias ll='ls --color=auto -alh --group-directories-first'
 
 
 
@@ -146,21 +146,22 @@ sudo vim /etc/apt/sources.list.d/llvm.list
 
 Add these lines
 
-deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
-deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
+    deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
+    deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
 
 
 
 
 Mimic this line from https://github.com/teeks99/clang-ubuntu-docker/blob/master/clang-16/Dockerfile
 
-ADD llvm-snapshot.gpg.key.gpg /etc/apt/trusted.gpg.d
+    ADD llvm-snapshot.gpg.key.gpg /etc/apt/trusted.gpg.d
 
-curl -L -O https://github.com/teeks99/clang-ubuntu-docker/raw/master/clang-16/llvm-snapshot.gpg.key.gpg        <-- Get this URL by going to https://github.com/teeks99/clang-ubuntu-docker/blob/master/clang-16/llvm-snapshot.gpg.key.gpg and right-clicking Download button.
 
-sudo cp llvm-snapshot.gpg.key.gpg /etc/apt/trusted.gpg.d
+    curl -L -O https://github.com/teeks99/clang-ubuntu-docker/raw/master/clang-16/llvm-snapshot.gpg.key.gpg        <-- Get this URL by going to https://github.com/teeks99/clang-ubuntu-docker/blob/master/clang-16/llvm-snapshot.gpg.key.gpg and right-clicking Download button.
 
-ls -al /etc/apt/trusted.gpg.d
+    sudo cp llvm-snapshot.gpg.key.gpg /etc/apt/trusted.gpg.d
+
+    ls -al /etc/apt/trusted.gpg.d
 
 Make sure the file's user and group are root.
 
@@ -169,64 +170,64 @@ Make sure the file's user and group are root.
 
 Then run these commands
 
-sudo apt-get update
+    sudo apt-get update
 
-sudo apt-get install -y software-properties-common
+    sudo apt-get install -y software-properties-common
 
-sudo apt-get install -y gnupg
+    sudo apt-get install -y gnupg
 
 Needed for repo access
 
-sudo apt-get install -y apt-transport-https
+    sudo apt-get install -y apt-transport-https
 
-sudo apt-get install -y ca-certificates 
+    sudo apt-get install -y ca-certificates 
 
 
-sudo apt-get update
+    sudo apt-get update
 
-sudo apt-get install -y ca-certificates
+    sudo apt-get install -y ca-certificates
 
-sudo apt-get install -y build-essential
+    sudo apt-get install -y build-essential
 
 Install Tool
 
-sudo apt-get install -y clang-16
-sudo apt-get install -y clang-tools-16
-sudo apt-get install -y clang-format-16
-sudo apt-get install -y python3-clang-16
-sudo apt-get install -y libfuzzer-16-dev
-sudo apt-get install -y lldb-16                                               <-- This installs LLDB.
-sudo apt-get install -y lld-16
-sudo apt-get install -y libc++-16-dev
-sudo apt-get install -y libc++abi-16-dev
-sudo apt-get install -y libomp-16-dev
-sudo apt-get install -y libunwind-16-dev
-sudo apt-get install -y libpolly-16-dev
-sudo apt-get install -y libclc-16-dev
-sudo apt-get install -y # MLIR
-sudo apt-get install -y libmlir-15-dev mlir-15-tools
-sudo apt-get install -y # Bolt
-sudo apt-get install -y # Doesn't work on aarch64 libbolt-16-dev bolt-16
-sudo apt-get install -y # LLVM WASM
-sudo apt-get install -y libclang-rt-16-dev-wasm32
-sudo apt-get install -y libclang-rt-16-dev-wasm64
-sudo apt-get install -y libc++-16-dev-wasm32
-sudo apt-get install -y libc++abi-16-dev-wasm32
-sudo apt-get install -y libclang-rt-16-dev-wasm32
-sudo apt-get install -y libclang-rt-16-dev-wasm64
+    sudo apt-get install -y clang-16
+    sudo apt-get install -y clang-tools-16
+    sudo apt-get install -y clang-format-16
+    sudo apt-get install -y python3-clang-16
+    sudo apt-get install -y libfuzzer-16-dev
+    sudo apt-get install -y lldb-16                                               <-- This installs LLDB.
+    sudo apt-get install -y lld-16
+    sudo apt-get install -y libc++-16-dev
+    sudo apt-get install -y libc++abi-16-dev
+    sudo apt-get install -y libomp-16-dev
+    sudo apt-get install -y libunwind-16-dev
+    sudo apt-get install -y libpolly-16-dev
+    sudo apt-get install -y libclc-16-dev
+    sudo apt-get install -y # MLIR
+    sudo apt-get install -y libmlir-15-dev mlir-15-tools
+    sudo apt-get install -y # Bolt
+    sudo apt-get install -y # Doesn't work on aarch64 libbolt-16-dev bolt-16
+    sudo apt-get install -y # LLVM WASM
+    sudo apt-get install -y libclang-rt-16-dev-wasm32
+    sudo apt-get install -y libclang-rt-16-dev-wasm64
+    sudo apt-get install -y libc++-16-dev-wasm32
+    sudo apt-get install -y libc++abi-16-dev-wasm32
+    sudo apt-get install -y libclang-rt-16-dev-wasm32
+    sudo apt-get install -y libclang-rt-16-dev-wasm64
 
 
  Make an alias for the versioned executable
 
-sudo ln -s /usr/bin/clang-16 /usr/bin/clang
-sudo ln -s /usr/bin/clang++-16 /usr/bin/clang++
+    sudo ln -s /usr/bin/clang-16 /usr/bin/clang
+    sudo ln -s /usr/bin/clang++-16 /usr/bin/clang++
 
 I added this line
-sudo ln -s /usr/bin/lldb-16 /usr/bin/lldb
+    sudo ln -s /usr/bin/lldb-16 /usr/bin/lldb
 
 
 
-sudo reboot now
+    sudo reboot now
 
 
 
@@ -246,19 +247,19 @@ THESE STEPS HAVE BEEN REPLACED BY NEXT STEPS
 
 Update CMake.
 
-sudo apt install cmake
+    sudo apt install cmake
 
 
-which cmake
-/usr/bin/cmake
+    which cmake
+    /usr/bin/cmake
 
 
-ls -l /usr/bin | grep -i cmake
--rwxr-xr-x 1 root root     6747024 Aug 17  2022 cmake
+    ls -l /usr/bin | grep -i cmake
+    -rwxr-xr-x 1 root root     6747024 Aug 17  2022 cmake
 
 
-cmake --version
-cmake version 3.22.1
+    cmake --version
+    cmake version 3.22.1
 
 
 
@@ -274,29 +275,29 @@ https://cmake.org/download/
 
 Latest Release (3.26.4)
 
-cd ~
+    cd ~
 
-curl -L -O https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh
+    curl -L -O https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh
 
-chmod +x cmake-3.26.4-linux-x86_64.sh
+    chmod +x cmake-3.26.4-linux-x86_64.sh
 
-./cmake-3.26.4-linux-x86_64.sh
+    ./cmake-3.26.4-linux-x86_64.sh
 
-cd cmake-3.26.4-linux-x86_64/bin
+    cd cmake-3.26.4-linux-x86_64/bin
 
-./cmake --version
+    ./cmake --version
 
-cmake version 3.26.4
+    cmake version 3.26.4
 
-CMake suite maintained and supported by Kitware (kitware.com/cmake).
+    CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
-export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
+    export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
 
-export PATH=/home/james/cmake-3.26.4-linux-x86_64/bin:$PATH
+    export PATH=/home/james/cmake-3.26.4-linux-x86_64/bin:$PATH
 
-which cmake
+    which cmake
 
-cmake --version
+    cmake --version
 
 
 
@@ -317,7 +318,7 @@ cmake --version
 
 # Install Ninja
 
-sudo apt install ninja-build
+    sudo apt install ninja-build
 
 
 
@@ -335,9 +336,9 @@ https://docs.conan.io/2/tutorial/consuming_packages/build_simple_cmake_project.h
 
 This uses
 
-[generators]
-CMakeDeps
-CMakeToolchain
+    [generators]
+    CMakeDeps
+    CMakeToolchain
 
 This tutorial works.
 
@@ -351,14 +352,14 @@ It's only small flaw is that it uses ZLib, not Boost.
 
 # Install Conan
 
-cd ~
-sudo pip install conan
+    cd ~
+    sudo pip install conan
 
 
 
 
-cd ~
-rm -rf /home/james/.conan2
+    cd ~
+    rm -rf /home/james/.conan2
 
 
 
@@ -368,13 +369,15 @@ rm -rf /home/james/.conan2
 
 Need to set CC and CXX before running "conan profile detect --force", so that it detects clang instead of gcc.
 
-export CC=clang
+    export CC=clang
 
-export CXX=clang++
+    export CXX=clang++
 
-export CMAKE_GENERATOR="Ninja"
+    export CMAKE_GENERATOR="Ninja"
 
-conan profile detect --force
+    conan profile detect --force
+
+Output
 
 CC and CXX: clang, clang++ 
 Found clang 16.0
@@ -391,7 +394,7 @@ compiler.version=16
 os=Linux
 
 
-cat /home/james/.conan2/profiles/default
+    cat /home/james/.conan2/profiles/default
 
 
 
@@ -401,9 +404,9 @@ cat /home/james/.conan2/profiles/default
 
 
 
-mkdir starting-conan-cmake-boost-project
+    mkdir starting-conan-cmake-boost-project
 
-cd starting-conan-cmake-boost-project
+    cd starting-conan-cmake-boost-project
 
 
 
@@ -461,14 +464,14 @@ Latest version of boost is 1.82.
 
 
 
-vim conanfile.txt
+    vim conanfile.txt
 
-[requires]
-boost/1.82.0
+    [requires]
+    boost/1.82.0
 
-[generators]
-CMakeDeps
-CMakeToolchain
+    [generators]
+    CMakeDeps
+    CMakeToolchain
 
 
 
@@ -476,20 +479,20 @@ CMakeToolchain
 
 # Create CMakeLists.txt
 
-vim CMakeLists.txt
+    vim CMakeLists.txt
 
-Set project name to whatever you want:
+    Set project name to whatever you want:
 
-cmake_minimum_required(VERSION 3.26.4)
-project(starting-conan-cmake-boost-project VERSION 1.0 LANGUAGES CXX)
+    cmake_minimum_required(VERSION 3.26.4)
+    project(starting-conan-cmake-boost-project VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
-SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(CMAKE_CXX_STANDARD 17)
+    SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Boost 1.82.0 REQUIRED system filesystem)
+    find_package(Boost 1.82.0 REQUIRED system filesystem)
 
-add_executable(starting-conan-cmake-boost-project find-eventual-safe-states.cpp)
-target_link_libraries(starting-conan-cmake-boost-project PRIVATE Boost::headers Boost::system Boost::filesystem)
+    add_executable(starting-conan-cmake-boost-project find-eventual-safe-states.cpp)
+    target_link_libraries(starting-conan-cmake-boost-project PRIVATE Boost::headers Boost::system Boost::filesystem)
 
 
 
@@ -531,27 +534,27 @@ This is also pretty well documented at https://cmake.org/cmake/help/latest/modul
 
 # Create the source code
 
-vim starting-conan-cmake-boost-project.cpp
+    vim starting-conan-cmake-boost-project.cpp
 
-#include <boost/filesystem.hpp>
-#include <iostream>
+    #include <boost/filesystem.hpp>
+    #include <iostream>
 
-using namespace std; 
-using namespace boost::filesystem;
+    using namespace std; 
+    using namespace boost::filesystem;
 
-int main()
-{
-    boost::filesystem::directory_iterator iterator(string("."));
-    for(; iterator != boost::filesystem::directory_iterator(); ++iterator)
+    int main()
     {
-        cout << (iterator->path().filename()) << endl;
+        boost::filesystem::directory_iterator iterator(string("."));
+        for(; iterator != boost::filesystem::directory_iterator(); ++iterator)
+        {
+            cout << (iterator->path().filename()) << endl;
+        }
+
+        boost::filesystem::path full_path( boost::filesystem::current_path() );
+        std::cout << "Current path is : " << full_path << std::endl;
+    return 0;
+
     }
-
-    boost::filesystem::path full_path( boost::filesystem::current_path() );
-    std::cout << "Current path is : " << full_path << std::endl;
-   return 0;
-
-}
 
 
 
@@ -566,15 +569,15 @@ https://stackoverflow.com/questions/59509768/is-there-a-way-to-tell-conan-to-use
 
 
 
-cd /home/james/Interviews/leetcode/starting-conan-cmake-boost-project
+    cd /home/james/Interviews/leetcode/starting-conan-cmake-boost-project
 
-rm -rf build
+    rm -rf build
 
-rm CMakeUserPresets.json
+    rm CMakeUserPresets.json
 
-export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
+    export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
 
-export CMAKE_GENERATOR="Ninja"
+    export CMAKE_GENERATOR="Ninja"
 
 
 
@@ -585,12 +588,12 @@ This step creates the "build" folder and the "CMakeUserPresets.json" file.
 
 
 Build debug version of Boost:
-conan install . --output-folder=build --build=missing -s build_type=Debug
+    conan install . --output-folder=build --build=missing -s build_type=Debug
 
 OR
 
 Build release version of Boost:
-conan install . --output-folder=build --build=missing
+    conan install . --output-folder=build --build=missing
 
 
 For reference, see 
@@ -606,9 +609,9 @@ https://docs.conan.io/2.0/examples/dev_flow/debug/step_into_dependencies.html
 
 If need to capture output:
 
-conan install . --output-folder=build --build=missing >conan-install-output.txt 2>&1
+    conan install . --output-folder=build --build=missing >conan-install-output.txt 2>&1
 
-less --line-numbers --IGNORE-CASE conan-install-output.txt
+    less --line-numbers --IGNORE-CASE conan-install-output.txt
 
 
 
@@ -652,46 +655,46 @@ Local Cache
 
 Then install the packages:
 
-conan install . --output-folder=build --build=missing >conan-install-output.txt 2>&1
+    conan install . --output-folder=build --build=missing >conan-install-output.txt 2>&1
 
 
 Output includes
 
 Component configuration:
 
-    - atomic                   : building
-    - chrono                   : building
-    - container                : building
-    - context                  : building
-    - contract                 : building
-    - coroutine                : building
-    - date_time                : building
-    - exception                : building
-    - fiber                    : building
-    - filesystem               : building
-    - graph                    : building
-    - graph_parallel           : not building
-    - headers                  : not building
-    - iostreams                : building
-    - json                     : building
-    - locale                   : building
-    - log                      : building
-    - math                     : building
-    - mpi                      : not building
-    - nowide                   : building
-    - program_options          : building
-    - python                   : not building
-    - random                   : building
-    - regex                    : building
-    - serialization            : building
-    - stacktrace               : building
-    - system                   : building
-    - test                     : building
-    - thread                   : building
-    - timer                    : building
-    - type_erasure             : building
-    - url                      : building
-    - wave                     : building
+- atomic                   : building
+- chrono                   : building
+- container                : building
+- context                  : building
+- contract                 : building
+- coroutine                : building
+- date_time                : building
+- exception                : building
+- fiber                    : building
+- filesystem               : building
+- graph                    : building
+- graph_parallel           : not building
+- headers                  : not building
+- iostreams                : building
+- json                     : building
+- locale                   : building
+- log                      : building
+- math                     : building
+- mpi                      : not building
+- nowide                   : building
+- program_options          : building
+- python                   : not building
+- random                   : building
+- regex                    : building
+- serialization            : building
+- stacktrace               : building
+- system                   : building
+- test                     : building
+- thread                   : building
+- timer                    : building
+- type_erasure             : building
+- url                      : building
+- wave                     : building
 
 ...
 
@@ -756,28 +759,28 @@ In other words, it just points CMake at the conan_toolchain.cmake toolchain file
 
 Find where the boost filesystem library created by Conan lives:
 
-cd /home/james/.conan2
+    cd /home/james/.conan2
 
-find /home/james/.conan2 -iname '*libboost_filesystem*'
+    find /home/james/.conan2 -iname '*libboost_filesystem*'
 
-./p/b/boostbb4ee73c50288/b/build-release/boost/bin.v2/libs/filesystem/build/clng-lnx-16/rls/lnk-sttc/nm-on/thrd-mlt/vsblt-hdn/libboost_filesystem-variant-static.cmake
-./p/b/boostbb4ee73c50288/b/build-release/boost/bin.v2/libs/filesystem/build/clng-lnx-16/rls/lnk-sttc/nm-on/thrd-mlt/vsblt-hdn/libboost_filesystem.a
-./p/b/boostbb4ee73c50288/p/lib/libboost_filesystem.a
+    ./p/b/boostbb4ee73c50288/b/build-release/boost/bin.v2/libs/filesystem/build/clng-lnx-16/rls/lnk-sttc/nm-on/thrd-mlt/vsblt-hdn/libboost_filesystem-variant-static.cmake
+    ./p/b/boostbb4ee73c50288/b/build-release/boost/bin.v2/libs/filesystem/build/clng-lnx-16/rls/lnk-sttc/nm-on/thrd-mlt/vsblt-hdn/libboost_filesystem.a
+    ./p/b/boostbb4ee73c50288/p/lib/libboost_filesystem.a
 
 
 
 Find where the boost filesystem headers created by Conan live:
 
-find /home/james/.conan2 -iname 'filesystem.hpp'
+    find /home/james/.conan2 -iname 'filesystem.hpp'
 
-/home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/process/filesystem.hpp
-/home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/nowide/filesystem.hpp
-/home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/gil/io/detail/filesystem.hpp
-/home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/process/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/nowide/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/gil/io/detail/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/filesystem.hpp                      <-- Use "/home/james/.conan2/p/boostb0117c3bfd046/s/src" from this path.
+    /home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/process/filesystem.hpp
+    /home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/nowide/filesystem.hpp
+    /home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/gil/io/detail/filesystem.hpp
+    /home/james/.conan2/p/b/boost8164c4ff728cc/p/include/boost/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/process/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/nowide/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/gil/io/detail/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/filesystem.hpp                      <-- Use "/home/james/.conan2/p/boostb0117c3bfd046/s/src" from this path.
 
 
 
@@ -803,15 +806,15 @@ Makefile
 
 The commands are:
 
-cd build
+    cd build
 
-export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
+    export CONAN_CMAKE_PROGRAM="/home/james/cmake-3.26.4-linux-x86_64/bin/cmake"
 
-export PATH=/home/james/cmake-3.26.4-linux-x86_64/bin:$PATH
+    export PATH=/home/james/cmake-3.26.4-linux-x86_64/bin:$PATH
 
-cmake --version
+    cmake --version
 
-    cmake version 3.26.4
+        cmake version 3.26.4
 
 
 
@@ -822,7 +825,7 @@ These commands run CMake to consume CMakeLists.txt in the parent folder and prod
 
 Build debug - need to have built the debug version of Boost first:
 
-cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug
 
 
 OR
@@ -830,7 +833,7 @@ OR
 
 Build release - need to have built the release version of Boost first:
 
-cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
 
 
 
@@ -874,7 +877,7 @@ find-eventual-safe-states
 
 Commands are:
 
-cmake --build .
+    cmake --build .
 
 
 If the output looks like
@@ -906,7 +909,7 @@ https://docs.conan.io/2/tutorial/consuming_packages/build_simple_cmake_project.h
 
 # Run
 
-./starting-conan-cmake-boost-project
+    ./starting-conan-cmake-boost-project
 
 It actually works better than the versions built without using Conan - it lists the files in the current folder instead of just generating a garbled error message.
 
@@ -915,7 +918,7 @@ It actually works better than the versions built without using Conan - it lists 
 
 If need to load a non-statically-linked Boost library at runtime
 
-export LD_LIBRARY_PATH=/home/james/Interviews/starting-projects/starting-cmake-boost-project/boost/lib
+    export LD_LIBRARY_PATH=/home/james/Interviews/starting-projects/starting-cmake-boost-project/boost/lib
 
 
 
@@ -930,11 +933,11 @@ export LD_LIBRARY_PATH=/home/james/Interviews/starting-projects/starting-cmake-b
 # To uninstall boost
 
 To uninstall debian version
-sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev
+    sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev
 
 To uninstall the version which we installed from source
-sudo rm -rf /usr/local/include/boost
-sudo rm -f /usr/local/lib/libboost_*
+    sudo rm -rf /usr/local/include/boost
+    sudo rm -f /usr/local/lib/libboost_*
 
 To uninstall the one we had Conan install 
 
@@ -949,9 +952,7 @@ To uninstall the one we had Conan install
 
 # To install LLDB
 
-lldb
-Command 'lldb' not found, but can be installed with:
-sudo apt install lldb
+    sudo apt install lldb
 
 
 
@@ -976,26 +977,26 @@ In Visual Studio Code, hit Shift-Cmd-P.
 
 Type
 
-C/C++: Edit configurations (UI)
+    C/C++: Edit configurations (UI)
 
 
 
 
-cd ~/.conan2
-find ~/.conan2 -iname 'filesystem.hpp'
+    cd ~/.conan2
+    find ~/.conan2 -iname 'filesystem.hpp'
 
-/home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/process/filesystem.hpp
-/home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/nowide/filesystem.hpp
-/home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/gil/io/detail/filesystem.hpp
-/home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/filesystem.hpp
-/home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/process/filesystem.hpp
-/home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/nowide/filesystem.hpp
-/home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/gil/io/detail/filesystem.hpp
-/home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/process/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/nowide/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/gil/io/detail/filesystem.hpp
-/home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/filesystem.hpp                          <-- try "/home/james/.conan2/p/boostb0117c3bfd046/s/src" from this path.
+    /home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/process/filesystem.hpp
+    /home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/nowide/filesystem.hpp
+    /home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/gil/io/detail/filesystem.hpp
+    /home/james/.conan2/p/b/boosta6dfccc3b8dd0/p/include/boost/filesystem.hpp
+    /home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/process/filesystem.hpp
+    /home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/nowide/filesystem.hpp
+    /home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/gil/io/detail/filesystem.hpp
+    /home/james/.conan2/p/b/boost193bd5c3451ba/p/include/boost/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/process/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/nowide/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/gil/io/detail/filesystem.hpp
+    /home/james/.conan2/p/boostb0117c3bfd046/s/src/boost/filesystem.hpp                          <-- try "/home/james/.conan2/p/boostb0117c3bfd046/s/src" from this path.
 
 
 
@@ -1003,7 +1004,7 @@ find ~/.conan2 -iname 'filesystem.hpp'
 
 Back in Visual Studio Code, in the "Include path" section, add this line:
 
-/home/james/.conan2/p/boost0eafd9621eb61/s/src
+    /home/james/.conan2/p/boost0eafd9621eb61/s/src
 
 Hit Cmd-S to save.
 
@@ -1013,23 +1014,23 @@ c_cpp_properties.json
 
 containing
 
-{
-    "configurations": [
-        {
-            "name": "Linux",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "/home/james/.conan2/p/boost0eafd9621eb61/s/src"
-            ],
-            "defines": [],
-            "compilerPath": "/usr/bin/clang",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "linux-clang-x64"
-        }
-    ],
-    "version": 4
-}
+    {
+        "configurations": [
+            {
+                "name": "Linux",
+                "includePath": [
+                    "${workspaceFolder}/**",
+                    "/home/james/.conan2/p/boost0eafd9621eb61/s/src"
+                ],
+                "defines": [],
+                "compilerPath": "/usr/bin/clang",
+                "cStandard": "c17",
+                "cppStandard": "c++17",
+                "intelliSenseMode": "linux-clang-x64"
+            }
+        ],
+        "version": 4
+    }
 
 Restart Visual Studio Code.
 
@@ -1052,9 +1053,9 @@ Very slick.
 
 
 
-lldb --version
+    lldb --version
 
-which lldb
+    which lldb
 
 /usr/bin/lldb
 
@@ -1154,23 +1155,23 @@ This matches the documentation for CodeLLDB at https://github.com/vadimcn/codell
 
 Edit it to look like this:
 
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Launch",
-            "program": "${workspaceFolder}/build/find-eventual-safe-states",
-            "args": [],
-            "cwd": "${workspaceFolder}/build"
-        }
+    {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "lldb",
+                "request": "launch",
+                "name": "Launch",
+                "program": "${workspaceFolder}/build/find-eventual-safe-states",
+                "args": [],
+                "cwd": "${workspaceFolder}/build"
+            }
 
-    ]
-}
+        ]
+    }
 
 Check that are building a debug version of project.
 
